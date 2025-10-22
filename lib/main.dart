@@ -1,4 +1,4 @@
-import 'package:algorithm_with_flutter_ui/path_findding/screen/path_findding_screen.dart';
+import 'package:algorithm_with_flutter_ui/utils/routers/app_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,9 +12,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      child: const MaterialApp(
+      child: MaterialApp.router(
+        // -- router
+        routerConfig: AppRouters.routers,
+
         debugShowCheckedModeBanner: false,
-        home: PathFinddingScreen()
       ),
     );
   }

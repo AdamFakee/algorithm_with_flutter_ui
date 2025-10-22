@@ -1,7 +1,7 @@
 import 'package:algorithm_with_flutter_ui/utils/consts/sizes.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/screen/widgets/control_board.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/screen/widgets/information_board.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/screen/widgets/node_board.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/screen/widgets/control_board.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/screen/widgets/information_board.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/screen/widgets/node_board.dart';
 import 'package:flutter/material.dart';
 
 class PathFinddingScreen extends StatelessWidget {

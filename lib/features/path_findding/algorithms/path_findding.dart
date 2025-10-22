@@ -1,4 +1,4 @@
-import 'package:algorithm_with_flutter_ui/path_findding/models/node_model.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
 
 abstract class PathFindding {
   String get name;

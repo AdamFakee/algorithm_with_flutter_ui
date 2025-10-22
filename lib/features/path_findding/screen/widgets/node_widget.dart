@@ -1,6 +1,6 @@
 import 'package:algorithm_with_flutter_ui/utils/consts/colors.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/models/node_model.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/state/path_findding_provider.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/state/path_findding_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

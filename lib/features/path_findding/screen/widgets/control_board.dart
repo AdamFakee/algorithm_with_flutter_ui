@@ -1,6 +1,6 @@
 import 'package:algorithm_with_flutter_ui/utils/consts/colors.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/path_findding.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/state/path_findding_provider.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/path_findding.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/state/path_findding_provider.dart';
 import 'package:algorithm_with_flutter_ui/components/icons/icon_outline_button.dart';
 import 'package:algorithm_with_flutter_ui/components/selects/select_options.dart';
 import 'package:flutter/material.dart';

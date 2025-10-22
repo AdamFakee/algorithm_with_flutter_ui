@@ -1,9 +1,9 @@
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/bfs.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/dfs.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/dijkstra.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/path_findding.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/models/node_model.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/state/path_findding_state_type.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/bfs.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/dfs.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/dijkstra.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/path_findding.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/state/path_findding_state_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PathFinddingState extends Notifier<PathFinddingStateType>{

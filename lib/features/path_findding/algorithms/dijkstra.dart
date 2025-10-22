@@ -1,6 +1,6 @@
 import 'package:algorithm_with_flutter_ui/utils/consts/direction.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/algorithms/path_findding.dart';
-import 'package:algorithm_with_flutter_ui/path_findding/models/node_model.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/path_findding.dart';
+import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
 import 'package:collection/collection.dart';
 
 class Dijkstra extends PathFindding{
