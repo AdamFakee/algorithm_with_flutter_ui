@@ -1,16 +1,21 @@
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_state_type.dart';
 
+/// Xác định vị trí của con trỏ khi khởi tạo thuật toán
+enum TwoPointerStartPosition {
+  start, // con trỏ nằm ở vị trí đầu tiên  
+  end // con trỏ nằm ở vị trí cuối cùng
+}
 
 abstract class TwoPointer {
   String get name;
   String get information;
 
   /// vị trí khởi tạo của `con trỏ bên phải` trong thuật toán
-  int get right;
+  TwoPointerStartPosition get right;
 
   /// vị trí khởi tạo của `con trỏ bên trái` trong thuật toán
-  int get left;
+  TwoPointerStartPosition get left;
   
   Iterable<({
     TwoPointerNode node, 

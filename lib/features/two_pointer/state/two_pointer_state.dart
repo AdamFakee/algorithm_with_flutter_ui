@@ -93,9 +93,28 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
 
   /// chọn thuật toán được sử dụng
   void selectAlgorithm(TwoPointer selectedAlgorithm) {
+    var rightPointer = state.rightPointer;
+    var leftPointer = state.leftPointer;
+
+    final maxColsInLastRow = state.nodes.last.length;
+
+    // lấy vị trí theo mảng nên cần trừ 1
+    if(selectedAlgorithm.left == TwoPointerStartPosition.start) {
+      leftPointer = (row: 0, col: 0);
+    } else {
+      leftPointer = (row: _maxRows - 1, col: maxColsInLastRow - 1);
+    }
+
+    if(selectedAlgorithm.right == TwoPointerStartPosition.start) {
+      rightPointer = (row: 0, col: 0);
+    } else {
+      rightPointer = (row: _maxRows - 1, col: maxColsInLastRow - 1);
+    }
+
     state = state.copyWith(
       selectedAlgorithm: selectedAlgorithm,
-      
+      rightPointer: rightPointer,
+      leftPointer: leftPointer
     );
   }
 

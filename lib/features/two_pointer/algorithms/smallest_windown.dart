@@ -7,13 +7,13 @@ class SmallestWindown extends TwoPointer {
   String get information => throw UnimplementedError();
 
   @override
-  int get left => 0;
-
-  @override
   String get name => "Smallest Window";
 
   @override
-  int get right => 0;
+  TwoPointerStartPosition get left => TwoPointerStartPosition.start;
+
+  @override
+  TwoPointerStartPosition get right => TwoPointerStartPosition.start;
 
   @override
   Iterable<({TwoPointerNode node, Pointer rightPointer, Pointer leftPointer, int resultLength})> solve ({
