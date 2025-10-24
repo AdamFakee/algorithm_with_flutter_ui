@@ -48,6 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
               card(
                 title: 'PathFindding',
                 onNavigation: () => context.push(AppRouterNames.pathFindding)
+              ),
+              card(
+                title: 'TwoPointer',
+                onNavigation: () => context.push(AppRouterNames.twoPointer)
               )
             ],
           ),
@@ -96,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 10),
@@ -106,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontSize: 15,
               height: 1.4,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 20),
@@ -115,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 10),
@@ -127,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontSize: 15,
               height: 1.5,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 20),

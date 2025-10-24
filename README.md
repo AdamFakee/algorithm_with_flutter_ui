@@ -13,6 +13,12 @@ Mục tiêu là giúp người học dễ dàng quan sát cách thuật toán ho
 
     > 🧩 Các thuật toán đều chạy trên **ma trận 2D** và hiển thị quá trình duyệt, tô màu trạng thái từng ô (start, finish, wall, visited, ...).
 
+### `Two Pointer`
+
+- **Smallest Window**
+
+    > 🧩 Các thuật toán trong nhóm Two Pointer đều chạy trên mảng 1D (hoặc chuỗi), mô phỏng quá trình di chuyển của hai con trỏ left và right.
+    Mỗi bước thực thi sẽ được hiển thị trực quan: cập nhật vị trí con trỏ, tô màu phần tử đang xét, hiển thị giá trị trung gian (window, sum, result, ...) giúp người học quan sát và hiểu rõ cách hoạt động của thuật toán.
 ---
 
 ## 🗂️ Cấu trúc thư mục

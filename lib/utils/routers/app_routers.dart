@@ -1,5 +1,6 @@
 import 'package:algorithm_with_flutter_ui/features/home/home_screen.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/screen/path_findding_screen.dart';
+import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/two_pointer_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouters {
@@ -15,7 +16,12 @@ class AppRouters {
       GoRoute(
         path: '/pathFindding',
         builder: (context, state) => const PathFinddingScreen(),
-      )
+      ),
+      // twoPointer
+      GoRoute(
+        path: '/twoPointer',
+        builder: (context, state) => const TwoPointerScreen(),
+      ),
     ]
   );
 }
