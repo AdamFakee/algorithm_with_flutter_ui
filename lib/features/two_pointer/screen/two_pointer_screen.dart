@@ -1,4 +1,5 @@
 import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/widgets/two_pointer_control_board.dart';
+import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/widgets/two_pointer_description_problem.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/widgets/two_pointer_information_board.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/widgets/two_pointer_input.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/screen/widgets/two_pointer_node_board.dart';
@@ -33,6 +34,7 @@ class TwoPointerScreen extends StatelessWidget {
             TwoPointerNodeBoard(),
             TwoPointerInformationBoard(),
             TwoPointerControlBoard(),
+            TwoPointerDescriptionProblem()
           ],
         )
       ),

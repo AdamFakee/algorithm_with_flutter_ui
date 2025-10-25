@@ -1,8 +1,13 @@
+import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown/smallest_window_description.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/two_pointer.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_state_type.dart';
 
 class SmallestWindown extends TwoPointer {
+
+  final _description = SmallestWindowDescription();
+
+
   @override
   String get information => throw UnimplementedError();
 
@@ -114,4 +119,10 @@ class SmallestWindown extends TwoPointer {
 
     return pointer;
   }
+  
+  @override
+  String get dartCode => _description.dartCode;
+  
+  @override
+  String get problem => _description.markdown;
 }

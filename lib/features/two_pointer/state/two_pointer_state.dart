@@ -1,5 +1,5 @@
-import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/longest_unique_substring.dart';
-import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown.dart';
+import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/longest_unique_substring/longest_unique_substring.dart';
+import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown/smallest_windown.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/two_pointer.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_state_type.dart';

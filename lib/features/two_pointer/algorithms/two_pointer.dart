@@ -11,6 +11,12 @@ abstract class TwoPointer {
   String get name;
   String get information;
 
+  /// đề bài
+  String get problem;
+
+  /// đoạn code xử lý đề bài
+  String get dartCode;
+
   /// vị trí khởi tạo của `con trỏ bên phải` trong thuật toán
   TwoPointerStartPosition get right;
 
