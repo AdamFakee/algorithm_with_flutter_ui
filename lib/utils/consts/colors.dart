@@ -9,6 +9,8 @@ class AppColors {
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFF57C00);
   static const Color black = Color(0xFF141414);
+  static const Color blackBlue = Color(0xFF373e48);
+  static const Color secondaryText = Color(0xFFc5d1de);
 
   // chỉ sử dụng cho sliding-window
   static const left = Color.fromARGB(255, 4, 137, 37);

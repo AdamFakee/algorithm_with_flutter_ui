@@ -1,3 +1,4 @@
+import 'package:algorithm_with_flutter_ui/features/common/state/language_code/language_code_state_type.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_state_type.dart';
 
@@ -15,7 +16,7 @@ abstract class TwoPointer {
   String get problem;
 
   /// đoạn code xử lý đề bài
-  String get dartCode;
+  String code(LanguageCode language);
 
   /// vị trí khởi tạo của `con trỏ bên phải` trong thuật toán
   TwoPointerStartPosition get right;

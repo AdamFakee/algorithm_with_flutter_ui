@@ -1,3 +1,4 @@
+import 'package:algorithm_with_flutter_ui/features/common/state/language_code/language_code_state_type.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown/smallest_window_description.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/two_pointer.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
@@ -121,8 +122,15 @@ class SmallestWindown extends TwoPointer {
   }
   
   @override
-  String get dartCode => _description.dartCode;
-  
-  @override
   String get problem => _description.markdown;
+
+  @override
+  String code(LanguageCode language) {
+    switch (language) {
+      case LanguageCode.cpp: 
+        return _description.cppCode;
+      case LanguageCode.dart:
+        return _description.dartCode;
+    }
+  }
 }

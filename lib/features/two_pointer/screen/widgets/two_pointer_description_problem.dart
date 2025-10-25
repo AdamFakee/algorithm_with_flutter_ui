@@ -1,3 +1,5 @@
+import 'package:algorithm_with_flutter_ui/features/common/state/language_code/language_code_provider.dart';
+import 'package:algorithm_with_flutter_ui/components/selects/language_code_selector.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_provider.dart';
 import 'package:algorithm_with_flutter_ui/utils/consts/sizes.dart';
 import 'package:algorithm_with_flutter_ui/utils/extentions/context_extensions.dart';
@@ -15,6 +17,7 @@ class TwoPointerDescriptionProblem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final algorithm = ref.watch(twoPointerProvider).selectedAlgorithm;
+    final languageCode = ref.watch(languageCodeProvider).language;
 
     if(algorithm == null) return const SizedBox.shrink();
 
@@ -74,12 +77,14 @@ class TwoPointerDescriptionProblem extends ConsumerWidget {
                     minWidth: context.width - Sizes.padding * 2
                   ),
                   child: HighlightView(
-                    algorithm.dartCode,
-                    language: 'dart',
+                    algorithm.code(languageCode),
+                    language: languageCode.name,
                     theme: vs2015Theme,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 12,
+                    padding: const EdgeInsets.only(
+                      top: Sizes.md * 3.5,
+                      bottom: Sizes.sm,
+                      left: Sizes.sm,
+                      right: Sizes.sm
                     ),
                     textStyle: const TextStyle(
                       fontFamily: 'monospace',
@@ -96,7 +101,7 @@ class TwoPointerDescriptionProblem extends ConsumerWidget {
               child: IconButton(
                 onPressed: () async {
                   await Clipboard.setData(
-                    ClipboardData(text: algorithm.dartCode)
+                    ClipboardData(text: algorithm.code(languageCode))
                   );
         
                   if(context.mounted) {
@@ -106,6 +111,7 @@ class TwoPointerDescriptionProblem extends ConsumerWidget {
                 icon: Icon(Icons.copy, color: Colors.grey)
               ),
             ),
+            LanguageCodeSelector(),
           ],
         ),
       ],
