@@ -144,7 +144,7 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
       await Future.delayed(Duration(milliseconds: AppDurations.miliseconds));
     }
 
-    if(result.last.resultLength > 0) {
+    if(result.isNotEmpty && result.last.resultLength > 0) {
       _updateResultNodes(result.last.resultLength);
     }
   }

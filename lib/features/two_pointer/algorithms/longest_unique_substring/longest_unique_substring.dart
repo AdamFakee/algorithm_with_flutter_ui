@@ -107,6 +107,7 @@ class LongestUniqueSubstring extends TwoPointer {
 
             // ---- nằm trong phạm vi từ start -> end => state = result ----
             if(inRange) {
+              if(node.state == TwoPointerNodeState.result) continue;
               node = node.copyWith(state: TwoPointerNodeState.result);
               nodes[node.row][node.col] = node;
 
