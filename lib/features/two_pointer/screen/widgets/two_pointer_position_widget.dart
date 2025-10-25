@@ -1,5 +1,6 @@
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_provider.dart';
 import 'package:algorithm_with_flutter_ui/utils/consts/colors.dart';
+import 'package:algorithm_with_flutter_ui/utils/consts/durations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,7 +29,7 @@ class TwoPointerPositionWidget extends StatelessWidget {
         return AnimatedPositioned(
           top: pos.top - _translateDy,
           left: pos.left,
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds: AppDurations.milisecondsSlower),
           child: Icon(
             Icons.arrow_downward,
             color: AppColors.right,
@@ -50,7 +51,7 @@ class TwoPointerPositionWidget extends StatelessWidget {
         return AnimatedPositioned(
           top: pos.top + _translateDy,
           left: pos.left,
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds: AppDurations.milisecondsSlower),
           child: Icon(
             Icons.arrow_upward,
             color: AppColors.left,

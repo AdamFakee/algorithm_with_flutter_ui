@@ -4,6 +4,7 @@ import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/dijk
 import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/path_findding.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/state/path_findding_state_type.dart';
+import 'package:algorithm_with_flutter_ui/utils/consts/durations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PathFinddingState extends Notifier<PathFinddingStateType>{
@@ -210,7 +211,7 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
       }
 
       _updateNode(node);
-      await Future.delayed(Duration(milliseconds: 30));
+      await Future.delayed(Duration(milliseconds: AppDurations.milisecondsSlower));
     }
 
     // hiện thị đường đi từ start -> finish

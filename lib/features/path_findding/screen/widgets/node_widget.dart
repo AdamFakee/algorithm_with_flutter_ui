@@ -1,6 +1,7 @@
 import 'package:algorithm_with_flutter_ui/utils/consts/colors.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/models/node_model.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/state/path_findding_provider.dart';
+import 'package:algorithm_with_flutter_ui/utils/consts/durations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +27,7 @@ class _NodeWidgetState extends ConsumerState<NodeWidget> with SingleTickerProvid
     
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: AppDurations.miliseconds),
     );
 
     animation = TweenSequence<Color?>([
@@ -71,7 +72,7 @@ class _NodeWidgetState extends ConsumerState<NodeWidget> with SingleTickerProvid
               ),
             ),
             child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 1000),
+              duration: Duration(seconds: AppDurations.seconds),
               reverseDuration: Duration(milliseconds: 0),
               switchInCurve: Curves.elasticOut,
               transitionBuilder: (child, animation) {

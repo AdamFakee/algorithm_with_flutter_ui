@@ -3,12 +3,13 @@ import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smalle
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/two_pointer.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/state/two_pointer_state_type.dart';
+import 'package:algorithm_with_flutter_ui/utils/consts/durations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TwoPointerState extends Notifier<TwoPointerStateType> {
   @override
   TwoPointerStateType build() {
-    final input = 'abcade';
+    final input = 'abcadedfghikjahkaaaaaaaaaqwertyuiopasdf';
     // final totalRows = (input.length / _maxCols).ceil();
     final nodes = _genNodeByInput(input, _maxCols);
 
@@ -140,7 +141,7 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
         rightPointer: right
       );
 
-      await Future.delayed(Duration(milliseconds: 500));
+      await Future.delayed(Duration(milliseconds: AppDurations.miliseconds));
     }
 
     if(result.last.resultLength > 0) {
