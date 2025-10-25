@@ -1,56 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class MenuBoard extends StatefulWidget {
-//   final String title;
-//   final Widget child;
-
-//   const MenuBoard({super.key, required this.title, required this.child});
-
-//   @override
-//   State<MenuBoard> createState() => _MenuBoardState();
-// }
-
-// class _MenuBoardState extends State<MenuBoard> {
-//   bool isOpenMenu = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       spacing: isOpenMenu ? 10 : 0,
-//       children: [
-//         // title
-//         Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Text(widget.title, style: TextStyle(
-//               fontSize: 20,
-//               fontWeight: FontWeight.w500,
-//             ),),
-//             GestureDetector(
-//               onTap: () => setState(() {
-//                 isOpenMenu = !isOpenMenu;
-//               }),
-//               child: AnimatedRotation(
-//                 turns: isOpenMenu ? 0.5 : 1,
-//                 duration: Duration(milliseconds: 500),
-//                 child: Icon(Icons.arrow_drop_down_rounded, size: 30,)
-//               ),
-//             )
-//           ],
-//         ),
-
-//         // information
-//         AnimatedSize(
-//           duration: const Duration(milliseconds: 500),
-//           reverseDuration: const Duration(seconds: 1),
-//           child: isOpenMenu ? widget.child : const SizedBox()
-//         )
-        
-//       ],
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
 class MenuBoard extends StatefulWidget {
@@ -69,18 +16,30 @@ class _MenuBoardState extends State<MenuBoard> with SingleTickerProviderStateMix
   late final AnimationController controller;
   late final Animation<double> animation;
 
+  void _openMenu() {
+    setState(() {
+      isOpenMenu = !isOpenMenu;
+      if(isOpenMenu) {
+        controller.forward();
+      } else {
+        controller.reverse();
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     controller = AnimationController(vsync: this, duration: duration);
 
-    animation = Tween<double>(begin: 1, end: 0).animate(CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn));
+    // mặc định: menu đóng khi vào lần đầu tiên
+    animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn));
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: isOpenMenu ? 10 : 0,
+      spacing: 5,
       children: [
         // title
         Row(
@@ -91,9 +50,7 @@ class _MenuBoardState extends State<MenuBoard> with SingleTickerProviderStateMix
               fontWeight: FontWeight.w500,
             ),),
             GestureDetector(
-              onTap: () => setState(() {
-                isOpenMenu = !isOpenMenu;
-              }),
+              onTap: () => _openMenu(),
               child: AnimatedRotation(
                 turns: isOpenMenu ? 0.5 : 1,
                 duration: duration,
@@ -104,25 +61,19 @@ class _MenuBoardState extends State<MenuBoard> with SingleTickerProviderStateMix
         ),
 
         // information
-        AnimatedSize(
-          alignment: Alignment.topCenter,
-          duration: duration,
-          reverseDuration: duration,
-          child: isOpenMenu ? widget.child : _closeMenu(widget.child)
+        AnimatedBuilder(
+          animation: controller, 
+          builder:(context, child) {
+            return SizeTransition(
+              sizeFactor: animation,
+              axisAlignment: -1,
+              child: child,
+            );
+          },
+          child: widget.child,
         )
         
       ],
-    );
-  }
-
-  Widget _closeMenu(Widget child) {
-    controller..reset()..forward();
-
-    return SizeTransition(
-      axis: Axis.vertical,
-      axisAlignment: -1,
-      sizeFactor: animation,
-      child: child,
     );
   }
 }

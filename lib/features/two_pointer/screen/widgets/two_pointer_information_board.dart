@@ -8,7 +8,6 @@ class TwoPointerInformationBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('--------------------');
     return MenuBoard(
       title: "Information", 
       child: Column(
