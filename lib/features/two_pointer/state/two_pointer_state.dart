@@ -28,6 +28,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
   final _maxCols = 10;
   int _maxRows = 1;
 
+  /// có đang chạy thuật toán hay không
+  bool isDoingAlgorithm = false;
+
   /// danh sách các thuật toán hỗ trợ
   final algorithms = [
     SmallestWindown(), LongestUniqueSubstring(), MinimumWindowSubstring()
@@ -64,6 +67,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
 
   /// Cập nhật input và tạo lại nodes
   void setInput(String input) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     if(input == state.input || input.isEmpty) return;
 
     // tính toán lại totalRows
@@ -96,6 +102,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
 
   /// chọn thuật toán được sử dụng
   void selectAlgorithm(TwoPointer selectedAlgorithm) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     var rightPointer = state.rightPointer;
     var leftPointer = state.leftPointer;
 
@@ -124,6 +133,12 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
   void startAlgorithm() async {
     if(state.selectedAlgorithm == null) return;
 
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
+    // đánh dấu đang chạy thuật toán
+    isDoingAlgorithm = true;
+
     final result = state.selectedAlgorithm!.solve(
       nodes: state.nodes, 
       leftPointer: state.leftPointer, 
@@ -148,6 +163,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
     if(result.isNotEmpty && result.last.resultLength > 0) {
       _updateResultNodes(result.last.resultLength);
     }
+
+    // đánh dấu đã chạy xong thuật toán
+    isDoingAlgorithm = false;
   }
 
 
@@ -185,6 +203,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
   }
 
   void reset() {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+    
     final nodes = _genNodeByInput(state.input);
     
     state = state.copyWith(nodes: nodes, rightPointer: (col: 0, row: 0), leftPointer: (col: 0, row: 0));

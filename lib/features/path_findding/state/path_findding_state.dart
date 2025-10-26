@@ -34,6 +34,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
 
   Node? finishNode;
 
+  /// có đang chạy thuật toán hay không
+  bool isDoingAlgorithm = false;
+
   // algorithms
   List<PathFindding> algorithmOpts = [
     BFS(), DFS(), Dijkstra()
@@ -63,6 +66,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
   }
 
   void onDragStart(int row, int col) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     final node = state.nodes[row][col];
 
     if(node.isVisitted) return;
@@ -80,6 +86,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
   }
 
   void onDragUpdate(int row, int col) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     final node = state.nodes[row][col];
 
     if(node.isVisitted) return;
@@ -106,6 +115,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
   }
 
   void onDragEnd(int row, int col) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     final node = state.nodes[row][col];
 
     if(node.isVisitted) return;
@@ -194,11 +206,21 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
   }
 
   void selectAlgorithmOpt(PathFindding algorithm) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     state = state.copyWith(selectedAlgorithmOpt: algorithm);
   }
 
   void startAlgorithm() async {
     if(state.selectedAlgorithmOpt == null) return;
+
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
+    // đánh dấu đang chạy thuật toán
+    isDoingAlgorithm = true;
+
     final visittedNodes = state.selectedAlgorithmOpt!.findPath(
       nodes: state.nodes, 
       start: state.nodes[startRow][startCol], 
@@ -218,6 +240,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
     if(finishNode != null) {
       _getPathStartToFinish(finishNode!);
     }
+
+    // đánh dấu đã chạy xong thuật toán
+    isDoingAlgorithm = false;
   }
 
   void _getPathStartToFinish(Node node) async {
@@ -230,6 +255,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
   }
 
   void resetVisittedNode() {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     for (var row in state.nodes) {
       for(var node in row) {
         if(node.isVisitted) {
@@ -248,6 +276,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
 
   /// reset nodes to `defautl`
   void reset() {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     state = state.copyWith(
       nodes: _genInitNodes()
     );
@@ -263,6 +294,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
 
   /// hiển thị chi phí di chuyển từ `start` -> `current node`
   void toggleShowDistance () {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+
     if(finishNode == null) return;
 
     state = state.copyWith(isShowDistance: !state.isShowDistance);
@@ -272,6 +306,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
 
   /// thay đổi `trọng số` - `weight` cho `node`
   void onLongPressToNode(int row, int col) {
+    // đang chạy thuật toán => k cho làm gì cả
+    if(isDoingAlgorithm) return;
+    
     final node = state.nodes[row][col];
 
     // check visitted
