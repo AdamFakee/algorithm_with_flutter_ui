@@ -59,6 +59,21 @@ class LongestUniqueSubstring extends TwoPointer {
     while(r < inputLength) {
       a[input.codeUnitAt(r)]++;
 
+      // node hiện tại
+      final node = nodes[rightPointer.row][rightPointer.col];      
+
+      nodes[rightPointer.row][rightPointer.col] = node.copyWith(state: TwoPointerNodeState.processing);
+
+      // cập nhật vị trí của rightPointer
+      rightPointer = updatePointer(
+        pointer: rightPointer, 
+        maxRows: maxRows, 
+        nodes: nodes
+      );
+      
+      yield (node: nodes[rightPointer.row][rightPointer.col], rightPointer: rightPointer, leftPointer: leftPointer, resultLength: 0);
+
+
       while(a[input.codeUnitAt(r)] > 1) {
         a[input.codeUnitAt(l)]--;
         l++;
@@ -81,18 +96,14 @@ class LongestUniqueSubstring extends TwoPointer {
       }
 
 
-      // cập nhật vị trí của rightPointer
-      rightPointer = updatePointer(
-        pointer: rightPointer, 
-        maxRows: maxRows, 
-        nodes: nodes
-      );
-
+      
       // độ dài của chuỗi con 
       final newAns = r - l + 1;
 
       // ---- đã tìm ra chuỗi con mới dài hơn ----
       if(newAns > ans) {
+        print('newAns $newAns');
+        print('ans $ans');
         ans = newAns;
 
         start = leftPointer;
@@ -100,8 +111,26 @@ class LongestUniqueSubstring extends TwoPointer {
 
         for(var row in nodes) {
           for(var node in row) {
+                        // do `rightPointer` cập nhật trước khi `end` được cập nhật 
+            // tuy nhiên việc cập nhật rightPointer là để con trỏ chạy lên (cập nhật animation)
+            // con việc xét phạm vi của chuỗi con đạt yêu cầu chỉ xét ở `rightPointer` trước khi cập nhật
+            // 
+            // "extra" = 0 => khi "r" đã đạt giới hạn, không thể tăng lên nữa (r+1 == inputLenght) => việc tăng "rightPointer" lên cũng là vô nghĩa, khi vòng lặp "while" không đủ điều kiện để chạy tiếp => không cần giảm "end"
+            // "extra" = 1 => ngược lại, nếu chưa xét hết các ký tự trong chuỗi "S" => việc tăng "rightPointer" lên và "xét luôn biến đã tăng" => dẫn đến việc cập nhật "node" chưa được "r" trỏ tới
+            // [comment "extra" để xem animation là sẽ hiểu]
+            final int extra = r + 1 == inputLength ? 0 : 1;
+
+            // -- check phạm vi khi node.row = end.row --
             if(node.row > end.row) break;
-            if(node.row == end.row && node.col > end.col) break;            
+
+            // nếu extra = 1 => không cần xét trường hợp này 
+            if(extra != 0) {
+              // end = (row: 1, col: 0) => chỉ xét end = (row: 0, col: 9) - ví dụ số cột tối đa = 9 
+              if(node.row == end.row && end.col == 0) break; 
+            }
+
+            // end = (row: 1, col: 2) => chỉ xét end = (row: 1, col: 2 - extra)
+            if(node.row == end.row && node.col > end.col - extra) break;        
 
             final inRange = _isInRange(row: node.row, col: node.col, start: start, end: end);
 
@@ -136,11 +165,11 @@ class LongestUniqueSubstring extends TwoPointer {
         // ---- nếu không tìm ra được chuỗi con dài hơn => các node sẽ được chuyển về state = processing ------
 
 
-        // node hiện tại
-        final node = nodes[rightPointer.row][rightPointer.col];      
-        nodes[rightPointer.row][rightPointer.col] = node.copyWith(state: TwoPointerNodeState.processing);
+        // // node hiện tại
+        // final node = nodes[rightPointer.row][rightPointer.col];      
+        // nodes[rightPointer.row][rightPointer.col] = node.copyWith(state: TwoPointerNodeState.processing);
         
-        yield (node: nodes[rightPointer.row][rightPointer.col], rightPointer: rightPointer, leftPointer: leftPointer, resultLength: result.length);
+        // yield (node: nodes[rightPointer.row][rightPointer.col], rightPointer: rightPointer, leftPointer: leftPointer, resultLength: result.length);
       }
 
       r++;
