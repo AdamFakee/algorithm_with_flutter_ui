@@ -1,4 +1,5 @@
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/longest_unique_substring/longest_unique_substring.dart';
+import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/minimum_window_substring/minimum_window_substring.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown/smallest_windown.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/two_pointer.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/models/two_pointer_model.dart';
@@ -29,7 +30,7 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
 
   /// danh sách các thuật toán hỗ trợ
   final algorithms = [
-    SmallestWindown(), LongestUniqueSubstring()
+    SmallestWindown(), LongestUniqueSubstring(), MinimumWindowSubstring()
   ];
 
   
