@@ -156,6 +156,8 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
     final left = state.leftPointer;
     final totalResultRows = ((resultLength - (_maxCols - left.col)) / _maxCols).ceil();
     int row = left.row + 1;
+
+    // đếm số ký tự đã xét
     int count = 0;
 
     // xét dòng đầu tiên tính từ vị trí hiện tại của leftPointer
@@ -170,7 +172,7 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
     }
 
     // xét các dòng còn lại: left.row + 1 => totalResultRows
-    while (row <= totalResultRows) {
+    while (row <= totalResultRows && count <= resultLength) {
       for(var node in state.nodes[row]) {
         if(count == resultLength) return;
         count++;

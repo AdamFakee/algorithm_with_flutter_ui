@@ -87,6 +87,16 @@ class SmallestWindown extends TwoPointer {
         a[input.codeUnitAt(l)]--;
         l++;
 
+        // kiểm tra chuỗi đã đủ ký tự khác nhau hay chưa 
+        // cập nhật kết quả nếu đủ điều kiện 
+        if(cnt == size) {
+          final newAns = r - l + 1;
+          if(newAns < ans) {
+            ans = newAns;
+            result = input.substring(l, r + 1);
+          }
+        }
+
         final node = nodes[leftPointer.row][leftPointer.col];
         nodes[leftPointer.row][leftPointer.col] = node.copyWith(state: TwoPointerNodeState.discarded);
 
