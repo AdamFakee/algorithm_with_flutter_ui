@@ -10,7 +10,7 @@ enum NodeState {
   start(AppColors.green, _defaultWeight),
   finish(Colors.red, _defaultWeight),
   wall(Colors.black, _defaultWeight),
-  increasedWeight(Colors.pink, _defaultWeight + 2); // mô tả node có weight lớn hơn các node khác 2 đơn vị.
+  increasedWeight(Colors.pink, _defaultWeight + 5); // mô tả node có weight lớn hơn các node khác 5 đơn vị.
 
   const NodeState(this.color, this.weight);
 
