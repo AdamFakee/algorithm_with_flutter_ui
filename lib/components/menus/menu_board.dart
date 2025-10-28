@@ -1,10 +1,14 @@
+import 'package:algorithm_with_flutter_ui/utils/consts/colors.dart';
 import 'package:flutter/material.dart';
 
 class MenuBoard extends StatefulWidget {
   final String title;
   final Widget child;
 
-  const MenuBoard({super.key, required this.title, required this.child});
+  /// click vào icon.question_mark để hiển thị UI cho mục đích mô tả kỹ hơn
+  final VoidCallback? onPress;
+
+  const MenuBoard({super.key, required this.title, required this.child, this.onPress});
 
   @override
   State<MenuBoard> createState() => _MenuBoardState();
@@ -45,10 +49,29 @@ class _MenuBoardState extends State<MenuBoard> with SingleTickerProviderStateMix
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(widget.title, style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),),
+            Row(
+              children: [
+                Text(widget.title, style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),),
+                IconButton(
+                  onPressed: widget.onPress,
+                  icon: Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9999),
+                      border: Border.all(
+                        color: AppColors.black,
+                        width: 1.2
+                      )
+                    ),
+                    child: Icon(Icons.question_mark, size: 10, color: AppColors.black,),
+                  ), 
+                )
+              ],
+            ),
             GestureDetector(
               onTap: () => _openMenu(),
               child: AnimatedRotation(
