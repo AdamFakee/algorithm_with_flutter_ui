@@ -1,3 +1,5 @@
+import 'package:algorithm_with_flutter_ui/features/common/state/speed_animation/speed_animation_provider.dart';
+import 'package:algorithm_with_flutter_ui/features/common/state/speed_animation/speed_animation_state_type.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/bfs.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/dfs.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/algorithms/dijkstra.dart';
@@ -226,6 +228,9 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
       start: state.nodes[startRow][startCol], 
       finish: state.nodes[finishRow][finishCol]
     );    
+    
+    // tốc độ chạy
+    final SpeedAnimation speed = ref.read(speedAnimationProvider).speed;
 
     for(Node node in visittedNodes) {
       if(node.state == NodeState.finish) {
@@ -233,7 +238,7 @@ class PathFinddingState extends Notifier<PathFinddingStateType>{
       }
 
       _updateNode(node);
-      await Future.delayed(Duration(milliseconds: AppDurations.milisecondsSlower));
+      await Future.delayed(Duration(milliseconds: (AppDurations.milisecondsSlower / speed.value).toInt()));
     }
 
     // hiện thị đường đi từ start -> finish

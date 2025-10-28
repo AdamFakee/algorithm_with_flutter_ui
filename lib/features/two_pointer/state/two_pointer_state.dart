@@ -1,3 +1,5 @@
+import 'package:algorithm_with_flutter_ui/features/common/state/speed_animation/speed_animation_provider.dart';
+import 'package:algorithm_with_flutter_ui/features/common/state/speed_animation/speed_animation_state_type.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/longest_unique_substring/longest_unique_substring.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/minimum_window_substring/minimum_window_substring.dart';
 import 'package:algorithm_with_flutter_ui/features/two_pointer/algorithms/smallest_windown/smallest_windown.dart';
@@ -139,6 +141,10 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
     // đánh dấu đang chạy thuật toán
     isDoingAlgorithm = true;
 
+    // tốc độ chạy
+    final SpeedAnimation speed = ref.read(speedAnimationProvider).speed;
+
+
     final result = state.selectedAlgorithm!.solve(
       nodes: state.nodes, 
       leftPointer: state.leftPointer, 
@@ -157,7 +163,9 @@ class TwoPointerState extends Notifier<TwoPointerStateType> {
         rightPointer: right
       );
 
-      await Future.delayed(Duration(milliseconds: AppDurations.miliseconds));
+      await Future.delayed(
+        Duration(milliseconds: (AppDurations.miliseconds / speed.value).toInt())
+      );
     }
 
     if(result.isNotEmpty && result.last.resultLength > 0) {

@@ -1,3 +1,4 @@
+import 'package:algorithm_with_flutter_ui/components/controls/speed_control.dart';
 import 'package:algorithm_with_flutter_ui/utils/consts/sizes.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/screen/widgets/control_board.dart';
 import 'package:algorithm_with_flutter_ui/features/path_findding/screen/widgets/information_board.dart';
@@ -29,7 +30,8 @@ class PathFinddingScreen extends StatelessWidget {
           children: [
             NodeBoard(),
             InformationBoard(),
-            ControlBoard()
+            ControlBoard(),
+            SpeedControl()
           ],
         )
       ),
